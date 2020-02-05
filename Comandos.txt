@@ -1,0 +1,4 @@
+adb devices
+Font Dejavu Sans Mono
+react-native init ""
+react-native run-android
