@@ -1,4 +1,4 @@
-package com.projetoMenu;
+package com.projetoContato;
 
 import android.app.Application;
 import android.content.Context;

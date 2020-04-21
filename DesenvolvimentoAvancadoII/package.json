@@ -1,5 +1,5 @@
 {
-  "name": "projetoMenu",
+  "name": "projetoContato",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -13,8 +13,10 @@
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
     "@react-native-community/netinfo": "^5.5.1",
+    "accordion-collapse-react-native": "^0.2.8",
     "react": "16.9.0",
     "react-native": "0.61.5",
+    "react-native-contacts": "^5.1.0",
     "react-native-enhanced-popup-menu": "^0.6.1",
     "react-native-exit-app": "^1.1.0",
     "react-native-gesture-handler": "^1.5.6",
@@ -23,6 +25,7 @@
     "react-native-redux-toast": "^1.0.3",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.0.0-alpha.34",
+    "react-native-sqlite-storage": "^4.1.0",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.1.1",
     "react-navigation-drawer": "^2.3.4",

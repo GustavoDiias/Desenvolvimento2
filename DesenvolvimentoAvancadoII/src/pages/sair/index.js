@@ -1,18 +1,10 @@
-import React  from 'react'; 
+import React from 'react';
 import RNExitApp from 'react-native-exit-app';
 
 function Sair() {
+  RNExitApp.exitApp();
 
- 
-    RNExitApp.exitApp();
-
-    return (
-        < >
- 
-        </>
-    );
-
+  return <></>;
 }
-
 
 export default Sair;

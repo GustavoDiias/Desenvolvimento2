@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch, connect } from 'react-redux';
+import React, {useState, useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RNExitApp from 'react-native-exit-app';
@@ -11,20 +11,18 @@ import {
   TouchableOpacity,
   StatusBar,
   ActivityIndicator,
-  Image,
-  BackHandler,
 } from 'react-native';
 
 import styles from './styles';
 
 //{navigation}
 
-function Login({ navigation }) {
+function Login({navigation}) {
   const [ideUsuario, setIdeUsuario] = useState('');
   const [senha, setSenha] = useState('');
   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
-  const auth = useSelector(state => state.auth);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,8 +31,8 @@ function Login({ navigation }) {
 
   useEffect(() => {
     if (auth.navegar === true) {
-      navigation.navigate("Main");
-      dispatch({ type: 'SIGN_IN_INICIAL' });
+      navigation.navigate('Main');
+      dispatch({type: 'SIGN_IN_INICIAL'});
     }
   }, [auth.navegar]);
 
@@ -51,13 +49,16 @@ function Login({ navigation }) {
     }
   }
 
+  function cadastrarUsuario() {
+    navigation.navigate('CadastroUsuario', {tipoManutencaoRota: 'Inclusao'});
+  }
+
   function autenticar() {
     var user = {
       ideUsuario: ideUsuario,
-      senha: senha,
+      senhaUsuario: senha,
     };
-
-    dispatch({ type: 'SIGN_IN_REQUEST', user });
+    dispatch({type: 'SIGN_IN_REQUEST', user});
   }
 
   function cancelar() {
@@ -75,11 +76,11 @@ function Login({ navigation }) {
           <Icon name="user-o" size={18} style={styles.inlineImg} />
           <TextInput
             style={styles.input}
-            placeholder="Digite o usuário do portal"
+            placeholder="Digite a Identificação do Usuário"
             autoCapitalize="none"
             autoCorrect={false}
             value={ideUsuario}
-            onChangeText={text => setIdeUsuario(text)}
+            onChangeText={(text) => setIdeUsuario(text)}
           />
         </View>
 
@@ -90,9 +91,9 @@ function Login({ navigation }) {
             autoCapitalize="none"
             autoCorrect={false}
             secureTextEntry={secureTextEntry}
-            placeholder="Digite a senha do portal"
+            placeholder="Digite a Senha do Usuário"
             value={senha}
-            onChangeText={text => setSenha(text)}
+            onChangeText={(text) => setSenha(text)}
           />
           <View style={styles.divOlho}>
             <TouchableOpacity
@@ -102,16 +103,32 @@ function Login({ navigation }) {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.containerButton}>
-          <TouchableOpacity
-            style={styles.buttonCancel}
-            onPress={() => cancelar()}>
-            <Text style={styles.buttonText}>Cancelar</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => autenticar()}>
-            {auth.loading && <ActivityIndicator size="large" color="white" />}
-            {!auth.loading && <Text style={styles.buttonText}>Autenticar</Text>}
-          </TouchableOpacity>
+        <View style={styles.containerButtonGeral}>
+          <View style={styles.containerButton}>
+            <TouchableOpacity
+              style={styles.buttonCancel}
+              onPress={() => cancelar()}>
+              <Text style={styles.buttonText}>Cancelar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => autenticar()}>
+              {auth.loading && <ActivityIndicator size="large" color="white" />}
+              {!auth.loading && (
+                <Text style={styles.buttonText}>Autenticar</Text>
+              )}
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.containerButtonCadastro}>
+            <TouchableOpacity
+              style={styles.buttonCadastrar}
+              onPress={() => cadastrarUsuario()}>
+              <Text style={styles.buttonText}>
+                Clique aqui para Cadastrar Usuário
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>

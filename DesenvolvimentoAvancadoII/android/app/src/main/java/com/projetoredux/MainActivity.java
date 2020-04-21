@@ -1,4 +1,4 @@
-package com.projetoMenu;
+package com.projetoContato;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "projetoMenu";
+    return "projetoContato";
   }
 }

@@ -6,10 +6,10 @@ import Menu, {
   Position,
 } from 'react-native-enhanced-popup-menu';
 import Icon from 'react-native-vector-icons/FontAwesome';
- 
-import Styles from './styles'
 
-function PopMenu( {navigation}) {
+import Styles from './styles';
+
+function PopMenu({navigation}) {
   let textRef = React.createRef();
   let menuRef = null;
 
@@ -21,23 +21,17 @@ function PopMenu( {navigation}) {
   const onPress = () => showMenu();
 
   function abrirAjuda() {
-    navigation.navigate("Ajuda");
-    hideMenu();
-  }
-
-  function abrirConfiguracao() {
-    navigation.navigate("Configuracao");
+    navigation.navigate('Ajuda');
     hideMenu();
   }
 
   function fechar() {
-    navigation.navigate("Sair");
+    navigation.navigate('Sair');
     hideMenu();
   }
 
   return (
-    <View
-      style={Styles.container}>
+    <View style={Styles.container}>
       <Text ref={textRef} style={Styles.headerText}></Text>
 
       <TouchableOpacity onPress={onPress}>
@@ -46,10 +40,9 @@ function PopMenu( {navigation}) {
 
       <Menu ref={setMenuRef}>
         <MenuItem onPress={abrirAjuda}>Item 1</MenuItem>
-        <MenuItem onPress={hideMenu}>Item 1</MenuItem>
-        <MenuItem onPress={abrirConfiguracao}>Item 3</MenuItem>
+        <MenuItem onPress={hideMenu}>Item 2</MenuItem>
         <MenuItem onPress={hideMenu} disabled>
-          Item 4
+          Item 3
         </MenuItem>
         <MenuDivider />
         <MenuItem onPress={fechar}>Fechar</MenuItem>
@@ -57,7 +50,5 @@ function PopMenu( {navigation}) {
     </View>
   );
 }
-
-
 
 export default PopMenu;
